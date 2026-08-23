@@ -100,7 +100,8 @@ jobs:
               exit 1
           }
           Write-Host "TCP connectivity successful!"
-   - name: Auto Install Ollama & Pull Model
+
+      - name: Auto Install Ollama & Build Model
         shell: powershell
         run: |
           Write-Host "Installing Ollama..."
@@ -114,7 +115,6 @@ jobs:
           Start-Sleep -Seconds 5
           
           Write-Host "Downloading GGUF file from HuggingFace..."
-          # سحب الملف المباشر بحجم 9.8GB (يستغرق بضع ثوانٍ بسرعة شبكة GitHub)
           Invoke-WebRequest -Uri "https://huggingface.co/ArliAI/Qwen3.8-27B-Uncensored-GGUF/resolve/main/Qwen3.8-27B-Uncensored-IQ2_XXS.gguf" -OutFile "model.gguf"
           
           Write-Host "Creating Ollama Model..."
